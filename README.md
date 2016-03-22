@@ -14,6 +14,19 @@ Ce module contient les classes métier communes aux producteurs (terminaux de pa
 ##producer
 
 Ce module contient un générateur de tickets de caisse qui produit les tickets dans Kafka. Lancer la classe `TicketsProducer` pour commencer à produire des tickets.
+En ligne de commandes :
+
+    sbt "project producer" "runMain com.octo.nad.handson.producer.TicketsProducer"
+
+Pour ajuster le débit, entrer dans la console l'intervalle de temps désiré entre chaque émission de ticket en millisecondes. Ex :
+
+    sbt "project producer" "runMain com.octo.nad.handson.producer.TicketsProducer"
+    Current throughput : 3 msg/seconds
+    Current throughput : 0 msg/seconds
+    10
+    Current throughput : 0 msg/seconds
+    Current throughput : 59 msg/seconds
+    Current throughput : 63 msg/seconds
 
 ##spark
 
@@ -47,7 +60,10 @@ Alors le résultat du workflow de streaming devrait persister les tuples suivant
     sport   | 12345     | 12.30
 
 
-Pour lancer l'application, lancer la classe app/StreamingApp
+Pour lancer l'application, lancer la classe app/StreamingApp :
+
+    sbt "project spark" "runMain com.octo.nad.handson.spark.app.StreamingApp
+
 
 
 ###batch
@@ -83,7 +99,9 @@ Alors le batch devra produire la table Cassandra hands_on.cumul suivante :
     sport   | 12346     | 33.05
 
 
-Pour lancer l'application, lancer la classe app/BatchApp
+Pour lancer l'application, lancer la classe app/BatchApp :
+
+    sbt "project spark" "runMain com.octo.nad.handson.spark.app.BatchApp
 
 ##exercice (serious things)
 
@@ -92,5 +110,9 @@ Le but du hands-on est de coder le pipeline de chaque application : batch et str
     sbt test
 
 Une fois que les pipelines auront été correctement écrits, les tests devront être au vert.
+
+##et après ?
+
+Amusez vous à produire des messages avec le producer, consommez les avec l'appli streaming. Enfin, consolidez les données avec le batch !
 
 Have fun !
