@@ -62,7 +62,7 @@ Alors le résultat du workflow de streaming devrait persister les tuples suivant
 
 Pour lancer l'application, lancer la classe app/StreamingApp :
 
-    sbt "project spark" "runMain com.octo.nad.handson.spark.app.StreamingApp
+    sbt "project spark" "runMain com.octo.nad.handson.spark.app.StreamingApp"
 
 
 
@@ -101,7 +101,7 @@ Alors le batch devra produire la table Cassandra hands_on.cumul suivante :
 
 Pour lancer l'application, lancer la classe app/BatchApp :
 
-    sbt "project spark" "runMain com.octo.nad.handson.spark.app.BatchApp
+    sbt "project spark" "runMain com.octo.nad.handson.spark.app.BatchApp"
 
 ##exercice (serious things)
 
