@@ -1,8 +1,8 @@
 package com.octo.nad.handson.spark.app
 
 import com.datastax.spark.connector.cql.CassandraConnector
+import com.octo.nad.handson.spark.BatchPipeline
 import com.octo.nad.handson.spark.mapping.Revenue
-import com.octo.nad.handson.spark.solution
 import com.octo.nad.handson.spark.utils.AppConf
 import org.apache.spark.{SparkConf, SparkContext}
 
@@ -27,7 +27,7 @@ object BatchApp extends App with AppConf {
   val ponctualRevenue = sc
     .cassandraTable[Revenue](CassandraKeySpace, CassandraPoncTable)
 
-  solution.BatchPipeline.processAll(ponctualRevenue)
+  BatchPipeline.processAll(ponctualRevenue)
 
 
   def prepareCassandraKeySpaceAndTables(confCassandra: SparkConf) = {

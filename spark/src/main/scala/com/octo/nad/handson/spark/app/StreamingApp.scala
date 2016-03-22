@@ -4,7 +4,7 @@ import java.util.Properties
 
 import _root_.kafka.serializer.StringDecoder
 import com.datastax.spark.connector.cql.CassandraConnector
-import com.octo.nad.handson.spark.solution
+import com.octo.nad.handson.spark.StreamingPipeline
 import com.octo.nad.handson.spark.utils.AppConf
 import kafka.admin.AdminUtils
 import kafka.common.TopicExistsException
@@ -45,7 +45,7 @@ object StreamingApp extends App with AppConf{
     .map{
       case (_, v) => v
     }
-  solution.StreamingPipeline.processAll(ticketStream)
+  StreamingPipeline.processAll(ticketStream)
 
 
   ssc.start()
