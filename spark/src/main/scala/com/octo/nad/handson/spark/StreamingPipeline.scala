@@ -1,13 +1,12 @@
 package com.octo.nad.handson.spark
 
-import com.octo.nad.handson.model.Produit
-import com.octo.nad.handson.model.Ticket
+import com.octo.nad.handson.model.{Produit, Ticket}
 import com.octo.nad.handson.spark.utils.AppConf
 import org.apache.spark.streaming.dstream.DStream
 
 object StreamingPipeline extends AppConf {
   def processAll : DStream[String] => Unit =
-    parseTickets andThen excludeStoreNumber56 andThen explodeTickets andThen computeCaBySection /*andThen updateInMemoryCaBySection*/ andThen addSectionString andThen persistCaBySection
+    parseTickets andThen excludeStoreNumber56 andThen explodeTickets andThen computeCaBySection andThen addSectionString andThen persistCaBySection
 
 
   // Doit renvoyer un objet Ticket étant donnée une string correspondant à un ticket au format JSON
@@ -50,15 +49,12 @@ object StreamingPipeline extends AppConf {
 
   // Doit faire la jointure entre les tuples et la liste mappant les id_sections aux libelles_sections
   // Ainsi, 46 doit devenir "hygiène"
-
-  import com.octo.nad.handson.spark.utils._
   def addSectionString : DStream[(Int, BigDecimal)] => DStream[(String, BigDecimal)] =
 
   ???
 
 
   // Sauver dans Cassandra
-  import com.datastax.spark.connector._
   def persistCaBySection : DStream[(String, BigDecimal)] => Unit =
 
   ???
