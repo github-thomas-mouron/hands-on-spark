@@ -22,6 +22,9 @@ trait SparkBatchSpec extends FlatSpec with BeforeAndAfter with Eventually with M
   before{
     _sc = new SparkContext(sparkConf(appName,master))
     _sc.setLogLevel("WARN")
+  }
 
+  after{
+    if (_sc != null) _sc.stop()
   }
 }
